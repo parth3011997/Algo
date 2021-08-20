@@ -1,0 +1,57 @@
+//taste case please enter the size of array3    2,3,4  please enter the second array3   3,4,5 median=3 array=233445
+package array;
+
+import java.util.Scanner;
+
+public class FindThemidian {
+	public static void main(String [] args){
+		System.out.println("please enter the size of array");
+		Scanner sc=new Scanner(System.in);
+		int x=sc.nextInt();
+		int count=0;
+		float median=0;
+		int [] num1 = new int[x];
+		for(int i=0;i<x;i++){
+			num1[i]=sc.nextInt();
+		}
+		System.out.print("please enter the second array");
+		int y=sc.nextInt();
+		int [] num2 = new int[y];
+		for(int j=0;j<y;j++){
+			num2[j] = sc.nextInt();
+		}
+		int z=num1.length+num2.length;
+		int [] num3 = new int[z];
+		for(int i=0;i<z;i++){
+			if(i<num1.length){
+				num3[i] = num1[i];
+			}
+			else if(i>=num1.length){
+				for(int j=0 ;j<num2.length;j++){
+					num3[i++] = num2[j];
+				}
+				break;
+			}
+		}
+		for (int i = 0; i < num3.length; i++)   { 
+			for (int j = i + 1; j < num3.length; j++)   {  
+					int tmp = 0;  
+					if (num3[i] > num3[j])   {  
+						tmp = num3[i];  
+						num3[i] = num3[j];  
+						num3[j] = tmp;  
+					}  
+			}    
+		}
+		count=num3.length;
+		if(count/2 != 0){
+			median =( (num3[(count/2)-1] + num3[(count/2)]))/2;
+			System.out.println(median);
+		}
+		for(int i=0;i<num3.length;i++){
+			System.out.print(num3[i]);
+		}
+		
+	}
+
+}
